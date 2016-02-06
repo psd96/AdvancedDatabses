@@ -20,12 +20,14 @@ def main():
             theft = doc.createElement('Theft')
             base.appendChild(theft)
             criminal(doc, theft)
+            location(doc, theft)
             victim(doc, theft)
 
         if option == 'Drugs':
             drugs = doc.createElement('Drugs')
             base.appendChild(drugs)
             criminal(doc, drugs)
+            location(doc, drugs)
             victim(doc, drugs)
 
         if option == 'Exit':
@@ -66,6 +68,9 @@ def victim(doc, crime):
     Name = doc.createElement('Name')
     Age = doc.createElement('Age')
     Height = doc.createElement('Height')
+    Num = doc.createElement('StreetNum')
+    StreetName = doc.createElement('StreetName')
+    Postcode = doc.createElement('Postcode')
 
     name = raw_input("\nVictims Details: \n\tEnter Victims name: ")
     victim_name = doc.createTextNode(name)
@@ -73,15 +78,27 @@ def victim(doc, crime):
     victim_age = doc.createTextNode(age)
     height = raw_input("\tEnter Victims height: ")
     victim_height = doc.createTextNode(height)
+    num = raw_input("\tEnter Victims house number: ")
+    victim_num = doc.createTextNode(num)
+    street = raw_input("\tEnter street name: ")
+    victim_street = doc.createTextNode(street)
+    code = raw_input("\tEnter postcode: ")
+    victim_postcode = doc.createTextNode(code)
 
     Name.appendChild(victim_name)
     Age.appendChild(victim_age)
     Height.appendChild(victim_height)
+    Num.appendChild(victim_num)
+    StreetName.appendChild(victim_street)
+    Postcode.appendChild(victim_postcode)
 
     crime.appendChild(vict)
     vict.appendChild(Name)
     vict.appendChild(Age)
     vict.appendChild(Height)
+    vict.appendChild(Num)
+    vict.appendChild(StreetName)
+    vict.appendChild(Postcode)
 
 
 def location(doc, crime):
