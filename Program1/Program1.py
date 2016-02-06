@@ -13,6 +13,7 @@ def main():
             murder = doc.createElement('Murder')
             base.appendChild(murder)
             criminal(doc, murder)
+            location(doc, murder)
             victim(doc, murder)
 
         if option == 'Theft':
@@ -42,11 +43,11 @@ def criminal(doc, crime):
     Age = doc.createElement('Age')
     Height = doc.createElement('Height')
 
-    name = raw_input("Enter criminals name: ")
+    name = raw_input("\nDetails about Criminal: \n\tEnter criminals name: ")
     criminal_name = doc.createTextNode(name)
-    age = raw_input("Enter criminals age: ")
+    age = raw_input("\tEnter criminals age: ")
     criminal_age = doc.createTextNode(age)
-    height = raw_input("Enter criminals height: ")
+    height = raw_input("\tEnter criminals height: ")
     criminal_height = doc.createTextNode(height)
 
     Name.appendChild(criminal_name)
@@ -66,11 +67,11 @@ def victim(doc, crime):
     Age = doc.createElement('Age')
     Height = doc.createElement('Height')
 
-    name = raw_input("Enter Victims name: ")
+    name = raw_input("\nVictims Details: \n\tEnter Victims name: ")
     victim_name = doc.createTextNode(name)
-    age = raw_input("Enter Victims age: ")
+    age = raw_input("\tEnter Victims age: ")
     victim_age = doc.createTextNode(age)
-    height = raw_input("Enter Victims height: ")
+    height = raw_input("\tEnter Victims height: ")
     victim_height = doc.createTextNode(height)
 
     Name.appendChild(victim_name)
@@ -81,6 +82,37 @@ def victim(doc, crime):
     vict.appendChild(Name)
     vict.appendChild(Age)
     vict.appendChild(Height)
+
+
+def location(doc, crime):
+    location = doc.createElement('Location')
+
+    streetNum = doc.createElement('StreetNum')
+    streetName = doc.createElement('StreetName')
+    county = doc.createElement('County')
+    postcode = doc.createElement('Postcode')
+
+    num = raw_input("\nLocation of where crime took place: \n\tEnter the street number of crime: ")
+    loc_num = doc.createTextNode(num)
+    name = raw_input("\tEnter the street name: ")
+    loc_name = doc.createTextNode(name)
+    conty = raw_input("\tEnter County: ")
+    loc_county = doc.createTextNode(conty)
+    code = raw_input("\tEnter Postcode: ")
+    loc_code = doc.createTextNode(code)
+
+    streetNum.appendChild(loc_num)
+    streetName.appendChild(loc_name)
+    county.appendChild(loc_county)
+    postcode.appendChild(loc_code)
+
+    crime.appendChild(location)
+    location.appendChild(streetNum)
+    location.appendChild(streetName)
+    location.appendChild(county)
+    location.appendChild(postcode)
+
+
 
 
 if __name__ == '__main__':
