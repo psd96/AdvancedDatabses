@@ -7,7 +7,7 @@ def main():
     base = doc.createElement('Crime')
     doc.appendChild(base)
     while True:
-        option = raw_input('What crime would you like to report? ')
+        option = raw_input('\nWhat crime would you like to report? (Murder, Theft or Drug. Exit to quit): ')
 
         if option == 'Murder':
             murder = doc.createElement('Murder')
@@ -15,6 +15,7 @@ def main():
             criminal(doc, murder)
             location(doc, murder)
             victim(doc, murder)
+            weapon(doc, murder)
 
         if option == 'Theft':
             theft = doc.createElement('Theft')
@@ -130,6 +131,19 @@ def location(doc, crime):
     location.appendChild(postcode)
 
 
+def weapon(doc, crime):
+    weapon = doc.createElement('Weapon')
+
+    weapon_num = raw_input("\nHow many weapons where used in the murder?")
+    weapon_num = int(weapon_num)
+    for x in range(0, weapon_num):
+        item = raw_input("\tWhat weapon was used? ")
+        weapon_item = doc.createTextNode(item)
+        weaponno = doc.createElement('Weapon' + str(x+1))
+        weaponno.appendChild(weapon_item)
+        weapon.appendChild(weaponno)
+
+    crime.appendChild(weapon)
 
 
 if __name__ == '__main__':
