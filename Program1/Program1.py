@@ -9,7 +9,7 @@ def main():
     while True:
         option = raw_input('\nWhat crime would you like to report? (Murder, Theft or Drug. Exit to quit): ')
 
-        if option == 'Murder':
+        if option == 'Murder' or option == 'murder':
             murder = doc.createElement('Murder')
             base.appendChild(murder)
             criminal(doc, murder)
@@ -17,7 +17,7 @@ def main():
             victim(doc, murder)
             weapon(doc, murder)
 
-        if option == 'Theft':
+        if option == 'Theft' or option == 'theft':
             theft = doc.createElement('Theft')
             base.appendChild(theft)
             criminal(doc, theft)
@@ -26,7 +26,7 @@ def main():
             forced(doc, theft)
             stolenItems(doc, theft)
 
-        if option == 'Drugs':
+        if option == 'Drugs' or option == 'drugs':
             drugs = doc.createElement('Drugs')
             base.appendChild(drugs)
             criminal(doc, drugs)
