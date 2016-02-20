@@ -7,11 +7,12 @@ def main():
     base = doc.createElement('Crime')
     doc.appendChild(base)
     while True:
-        option = raw_input('\nWhat crime would you like to report? (Murder, Theft or Drug. Exit to quit): ')
+        option = raw_input('\nWhat crime would you like to report? (Murder, Theft or Drugs. Exit to quit): ')
 
         if option == 'Murder' or option == 'murder':
             murder = doc.createElement('Murder')
             base.appendChild(murder)
+            dateTime(doc,murder)
             criminal(doc, murder)
             location(doc, murder)
             victim(doc, murder)
@@ -20,18 +21,20 @@ def main():
         if option == 'Theft' or option == 'theft':
             theft = doc.createElement('Theft')
             base.appendChild(theft)
-            #criminal(doc, theft)
-            #forced(doc, theft)
-            #location(doc, theft)
-            #victim(doc, theft)
+            dateTime(doc,theft)
+            criminal(doc, theft)
+            forced(doc, theft)
+            location(doc, theft)
+            victim(doc, theft)
             stolenItems(doc, theft)
 
         if option == 'Drugs' or option == 'drugs':
             drugs = doc.createElement('Drugs')
             base.appendChild(drugs)
-            #criminal(doc, drugs)
+            dateTime(doc,drugs)
+            criminal(doc, drugs)
             drug(doc, drugs)
-            #location(doc, drugs)
+            location(doc, drugs)
 
         if option == 'Exit':
             break
@@ -39,6 +42,49 @@ def main():
     docstring = parseString(doc.toprettyxml())
     print(docstring)
     docstring.writexml(open('Crime.xml', 'w'))
+
+
+def dateTime(doc, crime):
+    date = doc.createElement('Date')
+    time = doc.createElement('Time')
+
+    day = doc.createElement('Day')
+    month = doc.createElement('Month')
+    year = doc.createElement('Year')
+
+    mins = doc.createElement('Minutes')
+    hour = doc.createElement('Hour')
+
+    print("\nWhat day did the crime take place?")
+    dayIn = raw_input("\tDay: ")
+    dayNode = doc.createTextNode(dayIn)
+    monthIn = raw_input("\tMonth: ")
+    monthNode = doc.createTextNode(monthIn)
+    yearIn = raw_input("\tYear: ")
+    yearNode = doc.createTextNode(yearIn)
+
+    day.appendChild(dayNode)
+    month.appendChild(monthNode)
+    year.appendChild(yearNode)
+
+    date.appendChild(day)
+    date.appendChild(month)
+    date.appendChild(year)
+
+    print("What time did the crime take place?\n")
+    hourIn = raw_input("\tHour: ")
+    hourNode = doc.createTextNode(hourIn)
+    minIn = raw_input("\tMinutes: ")
+    minNode = doc.createTextNode(minIn)
+
+    hour.appendChild(hourNode)
+    mins.appendChild(minNode)
+
+    time.appendChild(hour)
+    time.appendChild(mins)
+
+    crime.appendChild(date)
+    crime.appendChild(time)
 
 
 def criminal(doc, crime):
