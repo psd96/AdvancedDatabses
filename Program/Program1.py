@@ -20,18 +20,18 @@ def main():
         if option == 'Theft' or option == 'theft':
             theft = doc.createElement('Theft')
             base.appendChild(theft)
-            criminal(doc, theft)
-            forced(doc, theft)
+            #criminal(doc, theft)
+            #forced(doc, theft)
             #location(doc, theft)
             #victim(doc, theft)
-            #stolenItems(doc, theft)
+            stolenItems(doc, theft)
 
         if option == 'Drugs' or option == 'drugs':
             drugs = doc.createElement('Drugs')
             base.appendChild(drugs)
-            criminal(doc, drugs)
-            location(doc, drugs)
-            victim(doc, drugs)
+            #criminal(doc, drugs)
+            drug(doc, drugs)
+            #location(doc, drugs)
 
         if option == 'Exit':
             break
@@ -152,8 +152,9 @@ def forced(doc, crime):
     forc = doc.createElement('Forced')
 
     input = raw_input("\nWas there forced entry? ")
-    forc = doc.createTextNode(input)
+    force = doc.createTextNode(input)
 
+    forc.appendChild(force);
     crime.appendChild(forc)
 
 
@@ -166,17 +167,17 @@ def stolenItems(doc, crime):
     input = raw_input("\nHow many items have been stolen? ")
     input = int(input)
     for x in range(0, input):
+        stolen.setAttribute('num', str(x+1))
+        stolen.setIdAttribute('num')
         item = raw_input("\tWhat is the item? ")
         stolenItem = doc.createTextNode(item)
-        stolenID = doc.createElement('Item' + str(x+1))
         value = raw_input("\tWhat is value of the item? ")
         stolenValue = doc.createTextNode(value)
 
         name.appendChild(stolenItem)
         val.appendChild(stolenValue)
-        stolenID.appendChild(name)
-        stolenID.appendChild(val)
-        stolen.appendChild(stolenID)
+        stolen.appendChild(name)
+        stolen.appendChild(val)
 
     crime.appendChild(stolen)
 
@@ -184,8 +185,24 @@ def stolenItems(doc, crime):
 def drug(doc, crime):
     drug = doc.createElement('Drug')
 
-    input = raw_input("\nWhat drug was on their possession? ")
-    poss = doc.createTextNode(input)
+    name = doc.createElement('Drug')
+    amoun = doc.createElement('Amount')
+
+    num = raw_input("\nHow many drugs did they have on them? ")
+    num = int(num)
+    for x in range(0, num):
+        input = raw_input("\tWhat drug was on their possession? ")
+        poss = doc.createTextNode(input)
+        drug.setAttribute('num', str(x+1))
+        drug.setIdAttribute('num')
+        input = raw_input("\tHow much, in grams, did they have on them? ")
+        amount = doc.createTextNode(input)
+
+        name.appendChild(poss)
+        amoun.appendChild(amount)
+        drug.appendChild(name)
+        drug.appendChild(amoun)
+
 
     crime.appendChild(drug)
 
