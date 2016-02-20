@@ -13,28 +13,28 @@ def main():
             murder = doc.createElement('Murder')
             base.appendChild(murder)
             dateTime(doc,murder)
-            criminal(doc, murder)
-            location(doc, murder)
-            victim(doc, murder)
-            weapon(doc, murder)
+            #criminal(doc, murder)
+            #location(doc, murder)
+            #victim(doc, murder)
+            #weapon(doc, murder)
 
         if option == 'Theft' or option == 'theft':
             theft = doc.createElement('Theft')
             base.appendChild(theft)
-            dateTime(doc,theft)
-            criminal(doc, theft)
-            forced(doc, theft)
-            location(doc, theft)
-            victim(doc, theft)
+            #dateTime(doc,theft)
+            #criminal(doc, theft)
+            #forced(doc, theft)
+            #location(doc, theft)
+            #victim(doc, theft)
             stolenItems(doc, theft)
 
         if option == 'Drugs' or option == 'drugs':
             drugs = doc.createElement('Drugs')
             base.appendChild(drugs)
-            dateTime(doc,drugs)
-            criminal(doc, drugs)
+            #dateTime(doc,drugs)
+            #criminal(doc, drugs)
             drug(doc, drugs)
-            location(doc, drugs)
+            #location(doc, drugs)
 
         if option == 'Exit':
             break
@@ -187,9 +187,7 @@ def weapon(doc, crime):
     for x in range(0, weapon_num):
         item = raw_input("\tWhat weapon was used? ")
         weapon_item = doc.createTextNode(item)
-        weaponno = doc.createElement('Weapon' + str(x+1))
-        weaponno.appendChild(weapon_item)
-        weapon.appendChild(weaponno)
+        weapon.appendChild(weapon_item)
 
     crime.appendChild(weapon)
 
@@ -207,14 +205,11 @@ def forced(doc, crime):
 def stolenItems(doc, crime):
     stolen = doc.createElement('StolenItems')
 
-    name = doc.createElement('Name')
-    val = doc.createElement('Value')
-
     input = raw_input("\nHow many items have been stolen? ")
     input = int(input)
     for x in range(0, input):
-        stolen.setAttribute('num', str(x+1))
-        stolen.setIdAttribute('num')
+        name = doc.createElement('Name')
+        val = doc.createElement('Value')
         item = raw_input("\tWhat is the item? ")
         stolenItem = doc.createTextNode(item)
         value = raw_input("\tWhat is value of the item? ")
@@ -225,32 +220,29 @@ def stolenItems(doc, crime):
         stolen.appendChild(name)
         stolen.appendChild(val)
 
-    crime.appendChild(stolen)
+        crime.appendChild(stolen)
 
 
 def drug(doc, crime):
-    drug = doc.createElement('Drug')
-
-    name = doc.createElement('Drug')
-    amoun = doc.createElement('Amount')
 
     num = raw_input("\nHow many drugs did they have on them? ")
     num = int(num)
     for x in range(0, num):
+        drug = doc.createElement('Drug')
+        subs = doc.createElement('Substance')
+        amoun = doc.createElement('Amount')
         input = raw_input("\tWhat drug was on their possession? ")
         poss = doc.createTextNode(input)
-        drug.setAttribute('num', str(x+1))
-        drug.setIdAttribute('num')
         input = raw_input("\tHow much, in grams, did they have on them? ")
         amount = doc.createTextNode(input)
 
-        name.appendChild(poss)
+        subs.appendChild(poss)
         amoun.appendChild(amount)
-        drug.appendChild(name)
+        drug.appendChild(subs)
         drug.appendChild(amoun)
 
+        crime.appendChild(drug)
 
-    crime.appendChild(drug)
 
 if __name__ == '__main__':
     main()

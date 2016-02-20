@@ -1,105 +1,128 @@
 from xml.dom.minidom import *
 
-myDoc = parse('C:\\Users\\Happy\\Desktop\\test.xml')
+print("Welcome\n")
 
-report = myDoc.getElementsByTagName("Report")[0]
 
-murder = report.getElementsByTagName("Murder")
-graffiti = report.getElementsByTagName("Graffiti")
-theft = report.getElementsByTagName("Theft")
+def getCriminal(crime):
+    criminal = crime.getElementsByTagName("Criminal")
+    for x in criminal:
+        crimName = x.getElementsByTagName('Name')[0].firstChild.data
+        crimAge = x.getElementsByTagName('Age')[0].firstChild.data
+        crimHeight = x.getElementsByTagName('Height')[0].firstChild.data
+        print("Criminal Details:")
+        print("\tName: ", crimName, "\n\tAge: ", crimAge, "\n\tHeight: ", crimHeight)
 
-print("Welcome to the report system, Crimes will be reported now")
 
-for murd in murder:
-    print("Murder: ")
-    casename = murd.getElementsByTagName("Case_Name")[0].firstChild.data
-    victimname = murd.getElementsByTagName("Victim_Name")[0].firstChild.data
-    victimheight = murd.getElementsByTagName("Victim_Height")[0].firstChild.data
-    victimweight = murd.getElementsByTagName("Victim_Weight")[0].firstChild.data
-    offendername = murd.getElementsByTagName("Offender_Name")[0].firstChild.data
-    offenderheight = murd.getElementsByTagName("Offender_Height")[0].firstChild.data
-    offenderweight = murd.getElementsByTagName("Offender_Weight")[0].firstChild.data
-    time = murd.getElementsByTagName("time")[0].firstChild.data
-    weapon = murd.getElementsByTagName("Weapon")[0].firstChild.data
-    weaponcolor = murd.getElementsByTagName("Weapon_color")[0].firstChild.data
-    weaponsize = murd.getElementsByTagName("Weapon_size")[0].firstChild.data
-    location = murd.getElementsByTagName("Location")[0].firstChild.data
-    postcode = murd.getElementsByTagName("Postcode")[0].firstChild.data
-    streetname = murd.getElementsByTagName("Street_Name")[0].firstChild.data
-    county = murd.getElementsByTagName("County_Name")[0].firstChild.data
-    witness = murd.getElementsByTagName("Witness")
+def getDateTime(crime):
+    date = crime.getElementsByTagName("Date")
+    time = crime.getElementsByTagName("Time")
+    for x in date:
+        day = x.getElementsByTagName('Day')[0].firstChild.data
+        month = x.getElementsByTagName('Month')[0].firstChild.data
+        year = x.getElementsByTagName('Year')[0].firstChild.data
 
-    print("Case name: ", casename, "\nVictim Name: ", victimname, "\nVictim Weight: ", victimheight,
-          "\nVictim Weight: ", victimweight, "\nOffender Name: ", offendername, "\nOffender Height: ", offenderheight,
-          "\nOffender Weight: ", offenderweight, "\nTime: ", time, "\nWeapon: ", weapon, "\nWeapon Color: ",
-          weaponcolor, "\nWeaoon Size: ", weaponsize)
-    print("Location: ", location, "\nPostcode: ", postcode, "\nSteet Name: ", streetname, "\nCounty: ", county)
+    for x in time:
+        hour = x.getElementsByTagName('Hour')[0].firstChild.data
+        mins = x.getElementsByTagName('Minutes')[0].firstChild.data
 
-    for x in witness:
-        witnessname = x.getElementsByTagName("Witness_Name")[0].firstChild.data
-        witneslocation = x.getElementsByTagName("Witness_Location")[0].firstChild.data
-        witnespostcode = x.getElementsByTagName("Witness_Postcode")[0].firstChild.data
-        witnesstreetname = x.getElementsByTagName("Witness_Street_Name")[0].firstChild.data
-        witnescounty = x.getElementsByTagName("Witness_County_Name")[0].firstChild.data
-        print("Witness Name: ", witnessname, "\nWitness Location: ", witneslocation, "\nWitness Postcode: ",
-              witnespostcode, "\nWitness Steet Name: ", witnesstreetname, "\nWitness County: ", witnescounty)
+    print("Crime took place on ",day,"/",month,"/",year," at ",hour,":",mins,".")
 
-for graff in graffiti:
-    print("Graffiti: ")
-    printed = graff.getElementsByTagName("Printed")[0].firstChild.data
-    found = county = graff.getElementsByTagName("Found")[0].firstChild.data
-    importance = graff.getElementsByTagName("Importance")[0].firstChild.data
-    residents_affected = graff.getElementsByTagName("Residents_affected")[0].firstChild.data
-    easilyacc = graff.getElementsByTagName("Easilyacc")[0].firstChild.data
-    offender = graff.getElementsByTagName("Offender")[0].firstChild.data
-    previous = county = graff.getElementsByTagName("Previous_Conviction")[0].firstChild.data
-    location = graff.getElementsByTagName("Location")[0].firstChild.data
-    postcode = graff.getElementsByTagName("Postcode")[0].firstChild.data
-    streetname = graff.getElementsByTagName("Street_Name")[0].firstChild.data
-    county = graff.getElementsByTagName("County_Name")[0].firstChild.data
 
-    print("What's Printed: ", printed, "\nWhen it was found: ", found, "\nHow important is it to remove: ", importance,
-          "\nResidents affected: ", residents_affected, "\nHow easy is it to access: ", easilyacc,
-          "\nWho is the offender: ", offender, "\nHave the been reported before: ", previous)
-    print("Location: ", location, "\nPostcode: ", postcode, "\nSteet Name: ", streetname, "\nCounty: ", county)
+def getLocation(crime):
+    location = crime.getElementsByTagName("Location")
+    for x in location:
+        streetNum = x.getElementsByTagName('StreetNum')[0].firstChild.data
+        streetName = x.getElementsByTagName('StreetName')[0].firstChild.data
+        county = x.getElementsByTagName('County')[0].firstChild.data
+        postcode = x.getElementsByTagName('Postcode')[0].firstChild.data
+        print("Crime took place at:")
+        print("\t", streetNum, "", streetName)
+        print("\t", county)
+        print("\t", postcode)
 
-    for x in graff:
-        witnessname = x.getElementsByTagName("Witness_Name")[0].firstChild.data
-        witneslocation = x.getElementsByTagName("Witness_Location")[0].firstChild.data
-        witnespostcode = x.getElementsByTagName("Witness_Postcode")[0].firstChild.data
-        witnesstreetname = x.getElementsByTagName("Witness_Street_Name")[0].firstChild.data
-        witnescounty = x.getElementsByTagName("Witness_County_Name")[0].firstChild.data
-        print("Witness Name: ", witnessname, "\nWitness Location: ", witneslocation, "\nWitness Postcode: ",
-              witnespostcode, "\nWitness Steet Name: ", witnesstreetname, "\nWitness County: ", witnescounty)
 
-for thef in theft:
-    print("Theft: ")
-    victimname = thef.getElementsByTagName("Victim_Name")[0].firstChild.data
-    offendername = thef.getElementsByTagName("Offender_Name")[0].firstChild.data
-    offenderheight = thef.getElementsByTagName("Offender_Height")[0].firstChild.data
-    offenderweight = thef.getElementsByTagName("Offender_Weight")[0].firstChild.data
-    items = thef.getElementsByTagName("Items")[0].firstChild.data
-    value = thef.getElementsByTagName("Value")[0].firstChild.data
-    room = thef.getElementsByTagName("Room")[0].firstChild.data
-    insurance = thef.getElementsByTagName("Insurance")[0].firstChild.data
-    safety = thef.getElementsByTagName("Safety")[0].firstChild.data
+def getVictim(crime):
+    victim = crime.getElementsByTagName("Victim")
+    for x in victim:
+        victName = x.getElementsByTagName('Name')[0].firstChild.data
+        victAge = x.getElementsByTagName('Age')[0].firstChild.data
+        victHeight = x.getElementsByTagName('Height')[0].firstChild.data
+        streetNum = x.getElementsByTagName('StreetNum')[0].firstChild.data
+        streetName = x.getElementsByTagName('StreetName')[0].firstChild.data
+        postcode = x.getElementsByTagName('Postcode')[0].firstChild.data
+        print("Victim Details:")
+        print("\tName: ", victName, "\n\tAge: ", victAge, "\n\tHeight: ", victHeight)
+        print("\tHome address of Victim is:")
+        print("\t\t", streetNum, "", streetName)
+        print("\t\t", postcode)
 
-    location = thef.getElementsByTagName("Location")[0].firstChild.data
-    postcode = thef.getElementsByTagName("Postcode")[0].firstChild.data
-    streetname = thef.getElementsByTagName("Street_Name")[0].firstChild.data
-    county = thef.getElementsByTagName("County_Name")[0].firstChild.data
 
-    print("Victim Name: ", victimname, "\nOffender Name: ", offendername, "\nOffender Height: ", "\nOffender Height: ",
-          offenderheight, "\nOffender Weight: ", offenderweight, "\nItems taken: ", items, "\nValue of items: ", value,
-          "\nRooms where taken: ", room, "\nDo they have insurance: ", insurance, "\nDid they have safety features: ",
-          safety)
-    print("Location: ", location, "\nPostcode: ", postcode, "\nSteet Name: ", streetname, "\nCounty: ", county)
+def getWeapon(crime):
+    weapon = crime.getElementsByTagName("Weapon")
+    print("Weapons used where: ")
+    for x in weapon:
+        weap = crime.getElementsByTagName("Weapon")[0].firstChild.data
+        print("\t", weap)
 
-    for x in thef:
-        witnessname = x.getElementsByTagName("Witness_Name")[0].firstChild.data
-        witneslocation = x.getElementsByTagName("Witness_Location")[0].firstChild.data
-        witnespostcode = x.getElementsByTagName("Witness_Postcode")[0].firstChild.data
-        witnesstreetname = x.getElementsByTagName("Witness_Street_Name")[0].firstChild.data
-        witnescounty = x.getElementsByTagName("Witness_County_Name")[0].firstChild.data
-        print("Witness Name: ", witnessname, "\nWitness Location: ", witneslocation, "\nWitness Postcode: ",
-              witnespostcode, "\nWitness Steet Name: ", witnesstreetname, "\nWitness County: ", witnescounty)
+
+def getDrug(crime):
+    drug = crime.getElementsByTagName("Drug")
+    print("Drugs found on criminal: ")
+    for x in drug:
+
+        dru = x.getElementsByTagName("Substance")[0].firstChild.nodeValue
+        amount = x.getElementsByTagName("Amount")[0].firstChild.nodeValue
+        print("\t", amount, "g of ", dru)
+
+
+
+def getStolenItems(crime):
+    item = crime.getElementsByTagName("StolenItems")
+    print("Stolen Items: ")
+    for x in item:
+        stolen = x.getElementsByTagName("Name")[0].firstChild.data
+        value = x.getElementsByTagName("Value")[0].firstChild.data
+        print("\tStolen item:", stolen, " Valued at:", value)
+
+
+def getForced(crime):
+    force = crime.getElementsByTagName("Forced")[0].firstChild.data
+    print("Forced entry:", force)
+
+
+def main():
+    myDoc = parse('Crime.xml')
+    report = myDoc.getElementsByTagName("Crime")[0]
+    murder = report.getElementsByTagName("Murder")
+    drugs = report.getElementsByTagName("Drugs")
+    theft = report.getElementsByTagName("Theft")
+
+    for murd in murder:
+        print("Murder: ")
+        #getDateTime(murd)
+        #getCriminal(murd)
+        #getLocation(murd)
+        #getVictim(murd)
+        #getWeapon(murd)
+
+    for dru in drugs:
+        print("Drug crimes: ")
+        #getDateTime(dru)
+        #getCriminal(dru)
+        #getLocation(dru)
+        #getVictim(dru)
+        getDrug(dru)
+
+    for the in theft:
+        print("Theft: ")
+        #getDateTime(the)
+        #getCriminal(the)
+        #getLocation(the)
+        #getVictim(the)
+        #getForced(the)
+        getStolenItems(the)
+
+
+
+if __name__ == '__main__':
+    main()
