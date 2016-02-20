@@ -69,7 +69,6 @@ def getDrug(crime):
     drug = crime.getElementsByTagName("Drug")
     print("Drugs found on criminal: ")
     for x in drug:
-
         dru = x.getElementsByTagName("Substance")[0].firstChild.nodeValue
         amount = x.getElementsByTagName("Amount")[0].firstChild.nodeValue
         print("\t", amount, "g of ", dru)
@@ -99,27 +98,27 @@ def main():
 
     for murd in murder:
         print("Murder: ")
-        #getDateTime(murd)
-        #getCriminal(murd)
-        #getLocation(murd)
-        #getVictim(murd)
-        #getWeapon(murd)
+        getDateTime(murd)
+        getCriminal(murd)
+        getLocation(murd)
+        getVictim(murd)
+        getWeapon(murd)
 
     for dru in drugs:
         print("Drug crimes: ")
-        #getDateTime(dru)
-        #getCriminal(dru)
-        #getLocation(dru)
-        #getVictim(dru)
+        getDateTime(dru)
+        getCriminal(dru)
+        getLocation(dru)
+        getVictim(dru)
         getDrug(dru)
 
     for the in theft:
         print("Theft: ")
-        #getDateTime(the)
-        #getCriminal(the)
-        #getLocation(the)
-        #getVictim(the)
-        #getForced(the)
+        getDateTime(the)
+        getCriminal(the)
+        getLocation(the)
+        getVictim(the)
+        getForced(the)
         getStolenItems(the)
 
 

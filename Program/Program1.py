@@ -13,7 +13,7 @@ def main():
             murder = doc.createElement('Murder')
             base.appendChild(murder)
             dateTime(doc,murder)
-            #criminal(doc, murder)
+            criminal(doc, murder)
             #location(doc, murder)
             #victim(doc, murder)
             #weapon(doc, murder)
@@ -88,27 +88,30 @@ def dateTime(doc, crime):
 
 
 def criminal(doc, crime):
-    criminal = doc.createElement('Criminal')
 
-    Name = doc.createElement('Name')
-    Age = doc.createElement('Age')
-    Height = doc.createElement('Height')
+    crim_num = int(raw_input("\nHow many criminals where involved in the murder? "))
+    for x in range(0, crim_num):
+        criminal = doc.createElement('Criminal')
 
-    name = raw_input("\nDetails about Criminal: \n\tEnter criminals name: ")
-    criminal_name = doc.createTextNode(name)
-    age = raw_input("\tEnter criminals age: ")
-    criminal_age = doc.createTextNode(age)
-    height = raw_input("\tEnter criminals height: ")
-    criminal_height = doc.createTextNode(height)
+        Name = doc.createElement('Name')
+        Age = doc.createElement('Age')
+        Height = doc.createElement('Height')
 
-    Name.appendChild(criminal_name)
-    Age.appendChild(criminal_age)
-    Height.appendChild(criminal_height)
+        name = raw_input("\nDetails about Criminal: \n\tEnter criminals name: ")
+        criminal_name = doc.createTextNode(name)
+        age = raw_input("\tEnter criminals age: ")
+        criminal_age = doc.createTextNode(age)
+        height = raw_input("\tEnter criminals height: ")
+        criminal_height = doc.createTextNode(height)
 
-    crime.appendChild(criminal)
-    criminal.appendChild(Name)
-    criminal.appendChild(Age)
-    criminal.appendChild(Height)
+        Name.appendChild(criminal_name)
+        Age.appendChild(criminal_age)
+        Height.appendChild(criminal_height)
+
+        crime.appendChild(criminal)
+        criminal.appendChild(Name)
+        criminal.appendChild(Age)
+        criminal.appendChild(Height)
 
 
 def victim(doc, crime):
