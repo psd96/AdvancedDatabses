@@ -9,7 +9,7 @@ def getCriminal(crime):
         crimName = x.getElementsByTagName('Name')[0].firstChild.data
         crimAge = x.getElementsByTagName('Age')[0].firstChild.data
         crimHeight = x.getElementsByTagName('Height')[0].firstChild.data
-        print("Criminal Details:")
+        print("\nCriminal Details:")
         print("\tName: ", crimName, "\n\tAge: ", crimAge, "\n\tHeight: ", crimHeight)
 
 
@@ -50,7 +50,7 @@ def getVictim(crime):
         streetNum = x.getElementsByTagName('StreetNum')[0].firstChild.data
         streetName = x.getElementsByTagName('StreetName')[0].firstChild.data
         postcode = x.getElementsByTagName('Postcode')[0].firstChild.data
-        print("Victim Details:")
+        print("\nVictim Details:")
         print("\tName: ", victName, "\n\tAge: ", victAge, "\n\tHeight: ", victHeight)
         print("\tHome address of Victim is:")
         print("\t\t", streetNum, "", streetName)

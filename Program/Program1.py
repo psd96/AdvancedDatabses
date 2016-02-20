@@ -89,7 +89,7 @@ def dateTime(doc, crime):
 
 def criminal(doc, crime):
 
-    crim_num = int(raw_input("\nHow many criminals where involved in the murder? "))
+    crim_num = int(raw_input("\nHow many criminals where involved in the crime? "))
     for x in range(0, crim_num):
         criminal = doc.createElement('Criminal')
 
@@ -115,42 +115,44 @@ def criminal(doc, crime):
 
 
 def victim(doc, crime):
-    vict = doc.createElement('Victim')
+    vict_num = int(raw_input("\nHow many victims where involved in the crime? "))
+    for x in range(0, vict_num):
+        vict = doc.createElement('Victim')
 
-    Name = doc.createElement('Name')
-    Age = doc.createElement('Age')
-    Height = doc.createElement('Height')
-    Num = doc.createElement('StreetNum')
-    StreetName = doc.createElement('StreetName')
-    Postcode = doc.createElement('Postcode')
+        Name = doc.createElement('Name')
+        Age = doc.createElement('Age')
+        Height = doc.createElement('Height')
+        Num = doc.createElement('StreetNum')
+        StreetName = doc.createElement('StreetName')
+        Postcode = doc.createElement('Postcode')
 
-    name = raw_input("\nVictims Details: \n\tEnter Victims name: ")
-    victim_name = doc.createTextNode(name)
-    age = raw_input("\tEnter Victims age: ")
-    victim_age = doc.createTextNode(age)
-    height = raw_input("\tEnter Victims height: ")
-    victim_height = doc.createTextNode(height)
-    num = raw_input("\tEnter Victims house number: ")
-    victim_num = doc.createTextNode(num)
-    street = raw_input("\tEnter street name: ")
-    victim_street = doc.createTextNode(street)
-    code = raw_input("\tEnter postcode: ")
-    victim_postcode = doc.createTextNode(code)
+        name = raw_input("\nVictims Details: \n\tEnter Victims name: ")
+        victim_name = doc.createTextNode(name)
+        age = raw_input("\tEnter Victims age: ")
+        victim_age = doc.createTextNode(age)
+        height = raw_input("\tEnter Victims height: ")
+        victim_height = doc.createTextNode(height)
+        num = raw_input("\tEnter Victims house number: ")
+        victim_num = doc.createTextNode(num)
+        street = raw_input("\tEnter street name: ")
+        victim_street = doc.createTextNode(street)
+        code = raw_input("\tEnter postcode: ")
+        victim_postcode = doc.createTextNode(code)
 
-    Name.appendChild(victim_name)
-    Age.appendChild(victim_age)
-    Height.appendChild(victim_height)
-    Num.appendChild(victim_num)
-    StreetName.appendChild(victim_street)
-    Postcode.appendChild(victim_postcode)
+        Name.appendChild(victim_name)
+        Age.appendChild(victim_age)
+        Height.appendChild(victim_height)
+        Num.appendChild(victim_num)
+        StreetName.appendChild(victim_street)
+        Postcode.appendChild(victim_postcode)
 
-    crime.appendChild(vict)
-    vict.appendChild(Name)
-    vict.appendChild(Age)
-    vict.appendChild(Height)
-    vict.appendChild(Num)
-    vict.appendChild(StreetName)
-    vict.appendChild(Postcode)
+        crime.appendChild(vict)
+        vict.appendChild(Name)
+        vict.appendChild(Age)
+        vict.appendChild(Height)
+        vict.appendChild(Num)
+        vict.appendChild(StreetName)
+        vict.appendChild(Postcode)
 
 
 def location(doc, crime):
@@ -206,11 +208,10 @@ def forced(doc, crime):
 
 
 def stolenItems(doc, crime):
-    stolen = doc.createElement('StolenItems')
-
     input = raw_input("\nHow many items have been stolen? ")
     input = int(input)
     for x in range(0, input):
+        stolen = doc.createElement('StolenItems')
         name = doc.createElement('Name')
         val = doc.createElement('Value')
         item = raw_input("\tWhat is the item? ")
