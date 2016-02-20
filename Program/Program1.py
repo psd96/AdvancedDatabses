@@ -21,10 +21,10 @@ def main():
             theft = doc.createElement('Theft')
             base.appendChild(theft)
             criminal(doc, theft)
-            location(doc, theft)
-            victim(doc, theft)
             forced(doc, theft)
-            stolenItems(doc, theft)
+            #location(doc, theft)
+            #victim(doc, theft)
+            #stolenItems(doc, theft)
 
         if option == 'Drugs' or option == 'drugs':
             drugs = doc.createElement('Drugs')
@@ -181,7 +181,13 @@ def stolenItems(doc, crime):
     crime.appendChild(stolen)
 
 
-#def drug(doc, crime):
+def drug(doc, crime):
+    drug = doc.createElement('Drug')
+
+    input = raw_input("\nWhat drug was on their possession? ")
+    poss = doc.createTextNode(input)
+
+    crime.appendChild(drug)
 
 if __name__ == '__main__':
     main()
