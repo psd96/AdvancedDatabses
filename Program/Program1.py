@@ -12,29 +12,29 @@ def main():
         if option == 'Murder' or option == 'murder':
             murder = doc.createElement('Murder')
             base.appendChild(murder)
-            dateTime(doc,murder)
+            dateTime(doc, murder)
             criminal(doc, murder)
-            #location(doc, murder)
-            #victim(doc, murder)
-            #weapon(doc, murder)
+            location(doc, murder)
+            victim(doc, murder)
+            weapon(doc, murder)
 
         if option == 'Theft' or option == 'theft':
             theft = doc.createElement('Theft')
             base.appendChild(theft)
-            #dateTime(doc,theft)
-            #criminal(doc, theft)
-            #forced(doc, theft)
-            #location(doc, theft)
-            #victim(doc, theft)
+            dateTime(doc, theft)
+            criminal(doc, theft)
+            forced(doc, theft)
+            location(doc, theft)
+            victim(doc, theft)
             stolenItems(doc, theft)
 
         if option == 'Drugs' or option == 'drugs':
             drugs = doc.createElement('Drugs')
             base.appendChild(drugs)
-            #dateTime(doc,drugs)
-            #criminal(doc, drugs)
+            dateTime(doc, drugs)
+            criminal(doc, drugs)
             drug(doc, drugs)
-            #location(doc, drugs)
+            location(doc, drugs)
 
         if option == 'Exit':
             break
@@ -101,7 +101,7 @@ def criminal(doc, crime):
         criminal_name = doc.createTextNode(name)
         age = raw_input("\tEnter criminals age: ")
         criminal_age = doc.createTextNode(age)
-        height = raw_input("\tEnter criminals height: ")
+        height = raw_input("\tEnter criminals height in cm: ")
         criminal_height = doc.createTextNode(height)
 
         Name.appendChild(criminal_name)
@@ -130,7 +130,7 @@ def victim(doc, crime):
         victim_name = doc.createTextNode(name)
         age = raw_input("\tEnter Victims age: ")
         victim_age = doc.createTextNode(age)
-        height = raw_input("\tEnter Victims height: ")
+        height = raw_input("\tEnter Victims height in cm: ")
         victim_height = doc.createTextNode(height)
         num = raw_input("\tEnter Victims house number: ")
         victim_num = doc.createTextNode(num)

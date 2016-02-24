@@ -1,6 +1,6 @@
 from xml.dom.minidom import *
 
-print("Welcome\n")
+print("Welcome to the Crime Report Generator.")
 
 
 def getCriminal(crime):
@@ -97,7 +97,7 @@ def main():
     theft = report.getElementsByTagName("Theft")
 
     for murd in murder:
-        print("Murder: ")
+        print("\nMurder: ")
         getDateTime(murd)
         getCriminal(murd)
         getLocation(murd)
@@ -105,7 +105,7 @@ def main():
         getWeapon(murd)
 
     for dru in drugs:
-        print("Drug crimes: ")
+        print("\nDrug crimes: ")
         getDateTime(dru)
         getCriminal(dru)
         getLocation(dru)
@@ -113,14 +113,13 @@ def main():
         getDrug(dru)
 
     for the in theft:
-        print("Theft: ")
+        print("\nTheft: ")
         getDateTime(the)
         getCriminal(the)
         getLocation(the)
         getVictim(the)
         getForced(the)
         getStolenItems(the)
-
 
 
 if __name__ == '__main__':
